@@ -106,6 +106,7 @@
     gcc 
     pkg-config 
     openssl
+    file
   ];
 
   fonts.packages = with pkgs; [
