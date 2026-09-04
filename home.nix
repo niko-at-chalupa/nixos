@@ -35,6 +35,7 @@
   home.packages = with pkgs; [
     kdePackages.dolphin
     kdePackages.kdeconnect-kde
+    yaak
     copyq
     arrpc
     brightnessctl
