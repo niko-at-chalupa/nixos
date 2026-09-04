@@ -281,7 +281,7 @@
     libxkbcommon        # libxkbcommon.so.0
     udev                # libudev.so.1 — actually provided by `systemd` on NixOS
     libinput             # libinput.so.10
-    mesa                 # libgbm.so.1
+    libgbm                 # libgbm.so.1
     fontconfig          # libfontconfig.so.1
     freetype             # libfreetype.so.6
   ];
