@@ -274,4 +274,15 @@
 
   services.upower.enable = true;
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2; # exact attr name may differ, check output above
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib   # libstdc++.so.6
+    libxkbcommon        # libxkbcommon.so.0
+    udev                # libudev.so.1 — actually provided by `systemd` on NixOS
+    libinput             # libinput.so.10
+    mesa                 # libgbm.so.1
+    fontconfig          # libfontconfig.so.1
+    freetype             # libfreetype.so.6
+  ];
 }

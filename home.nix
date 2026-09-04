@@ -61,6 +61,7 @@
     HYPRCURSOR_SIZE = "24";
     UV_PYTHON = "${pkgs.python3}/bin/python3";
     UV_PYTHON_PREFERENCE = "only-system";
+    LD_LIBRARY_PATH = lib.makeLibraryPath [ pkgs.file ];
   };
 
   programs.noctalia = {
