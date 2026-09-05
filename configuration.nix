@@ -257,6 +257,7 @@
 
   programs.steam = {
     enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
   services.power-profiles-daemon.enable = true;
 

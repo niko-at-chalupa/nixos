@@ -55,6 +55,7 @@
     unzip
     ffmpeg
     deno
+    lutris
   ];
 
   home.sessionVariables = {
