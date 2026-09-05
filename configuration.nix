@@ -176,6 +176,7 @@
 
   services.udisks2.enable = true;
   services.gvfs.enable = true;
+  services.gnome.at-spi2-core.enable = true;
   security.polkit.enable = true;
 
   systemd.user.services.polkit-kde-authentication-agent-1 = {
