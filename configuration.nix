@@ -285,5 +285,6 @@
     libgbm                 # libgbm.so.1
     fontconfig          # libfontconfig.so.1
     freetype             # libfreetype.so.6
+    ncurses5             # libncurses.so.5 and libtinfo.so.5 for older Lua tools
   ];
 }
