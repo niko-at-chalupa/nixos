@@ -103,6 +103,7 @@
     pkg-config 
     openssl
     file
+    protonup-qt
   ];
 
   fonts.packages = with pkgs; [
