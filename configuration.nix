@@ -83,6 +83,7 @@
     zsh
     jq
     ghostty
+    obs-studio
     kdePackages.breeze
     kdePackages.qqc2-desktop-style
     kdePackages.kirigami
