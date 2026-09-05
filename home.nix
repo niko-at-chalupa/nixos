@@ -56,6 +56,7 @@
     ffmpeg
     deno
     lutris
+    protontricks
   ];
 
   home.sessionVariables = {
