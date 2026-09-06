@@ -72,6 +72,11 @@
     ];
   };
 
+  programs.java.enable = true;
+  
+  # Choose your default JDK version (e.g., standard JDK package or specific versions like jdk21)
+  programs.java.package = pkgs.jdk; 
+
   # programs.firefox.enable = true;
 
   # List packages installed in system profile.
@@ -105,6 +110,7 @@
     file
     protonup-qt
     android-tools
+    jdk
   ];
 
   fonts.packages = with pkgs; [
