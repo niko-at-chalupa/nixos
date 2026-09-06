@@ -104,6 +104,7 @@
     openssl
     file
     protonup-qt
+    android-tools
   ];
 
   fonts.packages = with pkgs; [
