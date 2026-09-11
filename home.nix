@@ -41,6 +41,7 @@
     brightnessctl
     fuzzel
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.helium
     hyprshot
     vscode
     nodejs
@@ -57,6 +58,7 @@
     deno
     lutris
     protontricks
+	hyprpicker
   ];
 
   home.sessionVariables = {
