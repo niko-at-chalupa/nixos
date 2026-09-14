@@ -284,4 +284,6 @@
     freetype             # libfreetype.so.6
     ncurses5             # libncurses.so.5 and libtinfo.so.5 for older Lua tools
   ];
+
+  services.teamviewer.enable = true;
 }
