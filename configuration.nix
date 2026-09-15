@@ -94,6 +94,7 @@
     kdePackages.kirigami
     kdePackages.breeze-icons
     kdePackages.kservice
+    kdePackages.kfontinst
     wl-clipboard
     cliphist
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
