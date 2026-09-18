@@ -113,10 +113,6 @@
     jdk
   ];
 
-  fonts.packages = with pkgs; [
-    meslo-lgs-nf
-  ];
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -292,5 +288,12 @@
   ];
   networking.firewall.allowedUDPPortRanges = [
     { from = 1714; to = 1764; }
+  ];
+
+  fonts.packages = with pkgs; [
+    meslo-lgs-nf
+    (google-fonts.override {
+      fonts = [ "XanhMono" "RobotoMono" ];
+    })
   ];
 }
