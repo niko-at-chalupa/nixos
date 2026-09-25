@@ -11,17 +11,6 @@
 }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "saffron"; # Define your hostname.
-
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
@@ -267,7 +256,6 @@
   services.power-profiles-daemon.enable = true;
 
   services.upower.enable = true;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2; # exact attr name may differ, check output above
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [

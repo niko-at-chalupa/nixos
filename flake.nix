@@ -48,6 +48,13 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          ({ pkgs, ... }: {
+            imports = [ ./hardware-configuration.nix ];
+            boot.loader.systemd-boot.enable = true;
+            boot.loader.efi.canTouchEfiVariables = true;
+            boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
+            networking.hostName = "saffron";
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -58,6 +65,36 @@
               extraSpecialArgs = { inherit inputs; };
             };
           }
+        ];
+      };
+
+      nixosConfigurations.saffron-live = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          ({ inputs, pkgs, ... }: {
+            networking.hostName = "saffron-live";
+            environment.etc."nixos".source = ./.;
+            services.greetd = {
+              enable = true;
+              settings.initial_session = {
+                command = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
+                user = "niko";
+              };
+            };
+            security.sudo.wheelNeedsPassword = false;
+            users.users.niko.initialHashedPassword = "";
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.niko = import ./home.nix;
+              backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
+            };
+          })
         ];
       };
 
