@@ -1,0 +1,273 @@
+{
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+        "path": "host-spawn",
+        "args": ["bash"]
+        }
+    },  
+    "editor.fontFamily": "'MesloLGS NF'",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line-thin",
+
+    "Lua.runtime.version": "LuaJIT",
+    "Lua.diagnostics.globals": [
+        "love",
+    ],
+    "Lua.workspace.library": [
+        "${3rd}/love2d/library"
+    ],
+    "Lua.workspace.checkThirdParty": false,
+
+
+    "powermode.enabled": true,
+
+    "powermode.shake.enabled": false,
+    "powermode.explosions.gifMode": "continue",
+    "powermode.explosions.maxExplosions": 1, ///afdasdfasdfabhbhbhbasdfasidjfiasfdashiauhfdahsfduhashdfahudfhauhsdfuhasas
+    "powermode.explosions.backgroundMode":"image",
+    "powermode.explosions.customExplosions": [
+        "https://files.catbox.moe/t2opkv.gif"
+    ],
+    
+    "screencastMode.verticalOffset": 50,
+    "powermode.explosions.offset": 0.5,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "workbench.activityBar.location": "top",
+
+    "files.associations": {
+            "*.json": "jsonc" // This will associate all .json files with jsonc mode
+            // Or for specific files:
+            // "myconfig.json": "jsonc"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "NoctaliaTheme",
+    "python.analysis.typeCheckingMode": "strict",
+    "window.menuBarVisibility": "classic",
+    "git.autofetch": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.smoothScrolling": true,
+    "git.enableSmartCommit": true,
+    "git.allowForcePush": true,
+    "debug.onTaskErrors": "debugAnyway",
+    "workbench.startupEditor": "none",
+    "powermode.combo.location": "editor",
+    "powermode.combo.counterEnabled": "show",
+    "powermode.combo.counterSize": 4,
+    "powermode.combo.customCss": { // test sfhadsiafihashfiafhasfihhasfiashfasfihaisfhhaisfhihiashfsada
+        "left": "5%",
+        "right": "auto"
+    },
+    "gifPanel.shuffleIntervalMs": 20000,
+    "gifPanel.sources": [
+        "/Users/chalupa/Developer/.develop",
+        "/home/niko/Development/repositories/nikos-oxidized-rule34-wrapper"
+    ],
+    "remote.extensionKind": {
+        "thomashomecompany.vscode-gif": [
+            "ui"
+        ],
+        "pub.name": [
+            "ui"
+        ],
+        "continue.continue": [
+            "ui"
+        ]
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "git.confirmSync": false,
+    "workbench.editor.enablePreview": false,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "explorer.confirmDelete": false,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "continue.showInlineTip": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "envKeys",
+                "scope": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
+                "settings": {
+                    "foreground": "#19354900"
+                }
+            }
+        ]
+    },
+    "cloak.environmentKeys": "string.quoted.single.ini,constant.numeric.ini,string.quoted.double.ini",
+    "cloak.environmentComments": "comment.line.number-sign.ini",
+    "cloak.patterns": [
+        {
+            "pattern": ".*[Tt][Oo][Kk][Ee][Nn].*",
+            "filenames": ["**/.env*"]
+        }
+    ],
+    "camouflage.hover.message": "hidden",
+    "camouflage.selective.keyPatterns": [
+        "*MT*",
+        "KEY*",
+        "TOKEN*",
+        "*TOKEN*",
+        "*CLIENT*",
+        "*PASSWORD*",
+        "*USERNAME*"
+    ],
+    "camouflage.selective.enabled": true,
+    "camouflage.enabled": false,
+    "terminal.integrated.initialHint": false,
+    "camouflage.appearance.hiddenText": "██████████",
+    "camouflage.appearance.textColor": "#FFFFFF",
+    "githubPullRequests.pullBranch": "never",
+    "githubPullRequests.createOnPublishBranch": "never",
+    "git.addAICoAuthor": "chatAndAgent",
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "vscode_custom_css.imports": [
+        "file:///home/niko/.vscode/extensions/30d98f9b2.neovide-cursor-1.0.1/neovide-cursor.js"
+    ],
+    "editor.cursorSmoothCaretAnimation": "on",
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "python": false
+    },
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "leetcode.workspaceFolder": "/home/niko/.leetcode",
+    "leetcode.defaultLanguage": "python3",
+    "dance.modes": {
+
+        "": {
+            "hiddenSelectionsIndicatorsDecoration": {
+                "after": {
+                    "color": "$list.warningForeground"
+                },
+                "backgroundColor": "$inputValidation.warningBackground",
+                "borderColor": "$inputValidation.warningBorder",
+                "borderStyle": "solid",
+                "borderWidth": "1px",
+                "isWholeLine": true
+            }
+        },
+        "input": {
+            "cursorStyle": "underline-thin"
+        },
+        "insert": {
+            "onLeaveMode": [
+                [
+                    ".selections.save",
+                    {
+                        "register": " insert"
+                    }
+                ]
+            ]
+        },
+        "select": {},
+        "normal": {
+            "cursorStyle": "block",
+            "lineNumbers": "on",
+            "decorations": {
+                "applyTo": "main",
+                "backgroundColor": "$editor.hoverHighlightBackground",
+                "isWholeLine": true
+            },
+            "onEnterMode": [
+                [
+                    ".selections.restore",
+                    {
+                        "register": " ^",
+                        "try": true
+                    }
+                ]
+            ],
+            "onLeaveMode": [
+                [
+                    ".selections.save",
+                    {
+                        "register": " ^",
+                        "style": {
+                            "borderColor": "$editor.selectionBackground",
+                            "borderStyle": "solid",
+                            "borderWidth": "2px",
+                            "borderRadius": "1px"
+                        },
+                        "until": [
+                            [
+                                "mode-did-change",
+                                {
+                                    "include": "normal"
+                                }
+                            ],
+                            [
+                                "selections-did-change"
+                            ]
+                        ]
+                    }
+                ]
+            ]
+        }
+    },
+    "python.languageServer": "Default",
+    "mobile-preview.deviceOptions": [
+        "iPhone 11 (Pro)",
+        "iPhone 12 Mini (Pro)",
+        "iPhone 13 Pro",
+        "iPhone 14 Pro (Pro)",
+        "iPhone 15",
+        "iPhone 15 Pro Max",
+        "iPhone 16 (Pro)",
+        "iPhone 16 Pro (Pro)",
+        "iPhone 16 Pro Max (Pro)",
+        "iPhone 17 (Pro)",
+        "iPhone 17 Pro (Pro)",
+        "iPhone 17 Pro Max (Pro)",
+        "iPhone Air (Pro)",
+        "iPad Pro 11 (Pro)",
+        "iPad Air (Pro)",
+        "iPad Mini (Pro)",
+        "Samsung Galaxy S25 (Pro)",
+        "Samsung Galaxy S25 Ultra (Pro)",
+        "Samsung Galaxy S23 (Pro)",
+        "Google Pixel 9 (Pro)",
+        "Google Pixel 9 Pro (Pro)",
+        "Google Pixel 7 (Pro)",
+        "OnePlus 10 Pro (Pro)",
+        "Xiaomi 15 (Pro)",
+        "Xiaomi 15 Pro (Pro)",
+        "Xiaomi 13 (Pro)",
+        "Samsung Galaxy Tab S8 (Pro)",
+        "Google Pixel Tablet (Pro)"
+    ],
+    "mobile-preview.url": "http://localhost:5173",
+    "editor.rulers": [
+        80
+    ],
+
+    "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#e6c9f0",
+    "editorBracketHighlight.foreground2": "#c98fdb",
+    "editorBracketHighlight.foreground3": "#a45cc4",
+    "editorBracketHighlight.foreground4": "#8039a8",
+    "editorBracketHighlight.foreground5": "#5c2687",
+    "editorBracketHighlight.foreground6": "#3d1a63",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#ff5370"
+    },
+    "chat.tools.terminal.autoApprove": {
+        "systemctl": true
+    },
+    /*
+    "slint.lsp-args": [
+        "--backend=winit"
+    ]
+    */
+}

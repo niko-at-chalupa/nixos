@@ -1,0 +1,10 @@
+[theme]
+builtin = "Catppuccin"
+mode = "dark"
+source = "builtin"
+
+[wallpaper]
+enabled = true
+
+[wallpaper.default]
+path = "/home/niko/Pictures/Backgrounds/1/"
