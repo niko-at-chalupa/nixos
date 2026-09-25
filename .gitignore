@@ -1,0 +1,11 @@
+# Nix build outputs
+result
+result-*
+
+# Direnv
+.direnv
+
+# Temporary files
+*.swp
+*.bak
+*~

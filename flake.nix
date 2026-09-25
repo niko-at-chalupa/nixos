@@ -70,31 +70,12 @@
       nixosConfigurations.saffron-live = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          ({ inputs, pkgs, ... }: {
-            networking.hostName = "saffron-live";
-            environment.etc."nixos".source = ./.;
-            services.greetd = {
-              enable = true;
-              settings.initial_session = {
-                command = "${inputs.hyprland.packages.${pkgs.system}.hyprland}/bin/Hyprland";
-                user = "niko";
-              };
-            };
-            security.sudo.wheelNeedsPassword = false;
-            users.users.niko.initialHashedPassword = "";
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.niko = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-            };
-          })
-        ];
+        modules = [ ./hosts/live.nix ];
+      };
+
+      packages.x86_64-linux = {
+        iso = self.nixosConfigurations.saffron-live.config.system.build.isoImage;
+        default = self.packages.x86_64-linux.iso;
       };
 
       homeConfigurations.aflate = home-manager.lib.homeManagerConfiguration {
