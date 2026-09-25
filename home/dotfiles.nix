@@ -28,6 +28,12 @@ let
 in
 {
   home.file =
-    collectFiles ../dotfiles/home ""
+    builtins.removeAttrs (collectFiles ../dotfiles/home "") [ ".zshrc" ]
+    // {
+      ".p10k.zsh" = {
+        source = ../dotfiles/home/.p10k.zsh;
+        force = true;
+      };
+    }
     // collectFiles ../dotfiles/config ".config";
 }
