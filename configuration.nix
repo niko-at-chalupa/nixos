@@ -11,6 +11,13 @@
 }:
 
 {
+  networking.hostName = lib.mkDefault (
+    let
+      requestedHostname = builtins.getEnv "NIXOS_HOSTNAME";
+    in
+    if requestedHostname == "" then "saffron" else requestedHostname
+  );
+
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 

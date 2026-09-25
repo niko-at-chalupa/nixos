@@ -111,5 +111,5 @@ if [[ "$live_install" == true ]]; then
   echo "Installation complete. Reboot after unmounting the target filesystems."
 else
   require_command nixos-rebuild
-  nixos-rebuild switch --flake "$script_dir#$flake_name"
+  nixos-rebuild switch --impure --flake "$script_dir#$flake_name"
 fi
