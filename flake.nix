@@ -48,12 +48,16 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          ({ pkgs, ... }: {
+          ({ lib, pkgs, ... }: {
             imports = [ ./hardware-configuration.nix ];
             boot.loader.systemd-boot.enable = true;
             boot.loader.efi.canTouchEfiVariables = true;
             boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
-            networking.hostName = "saffron";
+            networking.hostName =
+              let
+                requestedHostname = builtins.getEnv "NIXOS_HOSTNAME";
+              in
+              lib.mkDefault (if requestedHostname == "" then "saffron" else requestedHostname);
           })
           home-manager.nixosModules.home-manager
           {
