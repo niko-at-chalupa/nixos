@@ -1,0 +1,6 @@
+background = 151217 
+background-opacity = 1
+background-blur = true
+font-family = "MesloLGS NF"
+custom-shader = "/home/niko/.config/ghostty/shaders/cursor_sweep.glsl"
+gtk-single-instance = true

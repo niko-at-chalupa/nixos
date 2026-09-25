@@ -8,10 +8,8 @@
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    inputs.noctalia.homeModules.default
-    ./home/git.nix
+    ./home/dotfiles.nix
     ./home/hyprland.nix
-    ./home/noctalia.nix
     ./home/packages.nix
     ./home/zsh.nix
   ];
