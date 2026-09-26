@@ -28,7 +28,7 @@ let
 in
 {
   home.file =
-    builtins.removeAttrs (collectFiles ../dotfiles/home "") [ ".zshrc" ]
+    builtins.removeAttrs (collectFiles ../dotfiles/home "") [ ".zshrc" ".zshenv" ]
     // {
       ".p10k.zsh" = {
         source = ../dotfiles/home/.p10k.zsh;
