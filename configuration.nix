@@ -286,6 +286,8 @@
     { from = 1714; to = 1764; }
   ];
 
+  networking.firewall.allowedUDPPorts = [ 53 67 ];
+
   fonts.packages = with pkgs; [
     meslo-lgs-nf
     (google-fonts.override {
