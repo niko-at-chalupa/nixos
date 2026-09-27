@@ -42,35 +42,43 @@
       home-manager,
       ...
     }:
+    let
+      mkHost =
+        hostname: hardwareConfig:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ({ lib, pkgs, ... }: {
+              imports = [ hardwareConfig ];
+              networking.hostName = hostname;
+              boot.loader.systemd-boot.enable = true;
+              boot.loader.efi.canTouchEfiVariables = true;
+              boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
+            })
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.niko = import ./home.nix;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
+              };
+            }
+          ];
+        };
+    in
     {
-      nixosConfigurations.saffron = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          ({ lib, pkgs, ... }: {
-            imports = [ ./hardware-configuration.nix ];
-            boot.loader.systemd-boot.enable = true;
-            boot.loader.efi.canTouchEfiVariables = true;
-            boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
-          })
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.niko = import ./home.nix;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit inputs; };
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.saffron-live = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/live.nix ];
+      nixosConfigurations = {
+        saffron = mkHost "saffron" ./hosts/saffron/hardware-configuration.nix;
+        aflate = mkHost "aflate" ./hosts/aflate/hardware-configuration.nix;
+        saffron-live = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/live.nix ];
+        };
       };
 
       packages.x86_64-linux = {

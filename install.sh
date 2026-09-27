@@ -4,7 +4,6 @@ set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 readonly script_dir
-readonly flake_name="saffron"
 readonly default_hostname="saffron"
 
 usage() {
@@ -23,7 +22,7 @@ EOF
 
 live_install=false
 target=/mnt
-hostname=$default_hostname
+hostname="${NIXOS_HOSTNAME:-$default_hostname}"
 hostname_was_set=false
 
 while [[ $# -gt 0 ]]; do
@@ -80,6 +79,7 @@ if [[ "$live_install" == true ]]; then
   }
   require_command nixos-generate-config
   require_command nixos-install
+  require_command git
   require_command mountpoint
   require_command install
   require_command cp
@@ -106,10 +106,12 @@ if [[ "$live_install" == true ]]; then
 
   install -d "$target_repo"
   cp -a "$script_dir/." "$target_repo/"
-  nixos-generate-config --root "$target" --show-hardware-config > "$target_repo/hardware-configuration.nix"
-  NIXOS_HOSTNAME="$hostname" nixos-install --impure --root "$target" --flake "$target_repo#$flake_name"
+  install -d "$target_repo/hosts/$hostname"
+  nixos-generate-config --root "$target" --show-hardware-config > "$target_repo/hosts/$hostname/hardware-configuration.nix"
+  git -C "$target_repo" add "hosts/$hostname/hardware-configuration.nix"
+  NIXOS_HOSTNAME="$hostname" nixos-install --impure --root "$target" --flake "$target_repo#$hostname"
   echo "Installation complete. Reboot after unmounting the target filesystems."
 else
   require_command nixos-rebuild
-  nixos-rebuild switch --impure --flake "$script_dir#$flake_name"
+  nixos-rebuild switch --impure --flake "$script_dir#$hostname"
 fi
