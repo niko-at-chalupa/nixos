@@ -7,6 +7,7 @@ return {
     conform.setup({
       formatters_by_ft = {
         lua = { "stylua" },
+        python = { "ruff_format" },
       },
       -- Configure format on save
       format_on_save = {

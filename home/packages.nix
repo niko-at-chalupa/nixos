@@ -17,6 +17,9 @@
     pnpm
     yarn
     python3
+    pyright
+    ruff
+    ty
     uv
     ripgrep
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
