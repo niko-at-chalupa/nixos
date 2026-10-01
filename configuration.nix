@@ -293,5 +293,25 @@
     (google-fonts.override {
       fonts = [ "XanhMono" "RobotoMono" ];
     })
+    (stdenvNoCC.mkDerivation {
+      pname = "aku-kamu-font";
+      version = "2.1";
+      src = fetchurl {
+        url = "https://dl.dafont.com/dl/?f=aku_kamu";
+        hash = "sha256-Ddbl8h3PKglaMSCh3WVh2ULEAvuB4Eoc/vhuFZIb5as=";
+      };
+      nativeBuildInputs = [ unzip ];
+      dontUnpack = true;
+      dontBuild = true;
+      installPhase = ''
+        unzip -j "$src" 'Aku&Kamu.otf' -d "$TMPDIR"
+        install -Dm644 "$TMPDIR/Aku&Kamu.otf" "$out/share/fonts/opentype/aku-kamu/Aku&Kamu.otf"
+      '';
+      meta = {
+        description = "Aku & Kamu typeface by Marsnev";
+        homepage = "https://www.dafont.com/aku-kamu.font";
+        license = lib.licenses.unfree;
+      };
+    })
   ];
 }
