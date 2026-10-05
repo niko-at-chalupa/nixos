@@ -314,4 +314,6 @@
       };
     })
   ];
+
+  fonts.fontDir.enable = true;
 }
