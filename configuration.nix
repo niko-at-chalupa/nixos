@@ -316,4 +316,6 @@
   ];
 
   fonts.fontDir.enable = true;
+  
+  networking.networkmanager.insertNameservers = [ "9.9.9.9" "149.112.112.112" ];
 }
