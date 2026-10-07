@@ -62,7 +62,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.niko = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "docker" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -318,4 +318,8 @@
   fonts.fontDir.enable = true;
   
   networking.networkmanager.insertNameservers = [ "9.9.9.9" "149.112.112.112" ];
+
+  virtualisation.docker = {
+    enable = true;
+  };
 }
