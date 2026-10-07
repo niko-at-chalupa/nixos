@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.zsh = {
@@ -15,6 +15,7 @@
     };
     initContent = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      source ${inputs.zsh-helix-mode.packages.${pkgs.system}.default}/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh
     '';
   };
 
