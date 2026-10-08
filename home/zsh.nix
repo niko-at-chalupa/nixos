@@ -53,6 +53,7 @@
   home.sessionPath = [
     "$HOME/.nix-profile/bin"
     "$HOME/.cargo/bin"
+    "$HOME/.npm-global/bin"
   ];
   home.sessionVariables.EDITOR = "nvim";
 }
