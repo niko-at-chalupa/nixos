@@ -6,3 +6,4 @@ custom-shader = /home/niko/.config/ghostty/shaders/cursor_sweep.glsl
 gtk-single-instance = true
 env = COLORTERM=truecolor
 shell-integration-features = ssh-env
+cursor-style-blink = false
