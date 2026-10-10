@@ -286,7 +286,9 @@
     { from = 1714; to = 1764; }
   ];
 
-  networking.firewall.allowedUDPPorts = [ 53 67 ];
+  networking.firewall.allowedUDPPorts = [ 53 67 config.services.tailscale.port ];
+
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   fonts.packages = with pkgs; [
     meslo-lgs-nf
@@ -322,4 +324,6 @@
   virtualisation.docker = {
     enable = true;
   };
+
+  services.tailscale.enable = true;
 }
