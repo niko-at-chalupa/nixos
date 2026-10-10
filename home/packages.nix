@@ -32,5 +32,6 @@
     lutris
     protontricks
     hyprpicker
+    openutau
   ];
 }
