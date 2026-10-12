@@ -107,6 +107,7 @@
     protonup-qt
     android-tools
     jdk
+    wine
   ];
 
   nix.settings.experimental-features = [
