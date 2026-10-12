@@ -100,7 +100,16 @@
     rust-analyzer
     rustfmt
     clippy
-    gcc 
+    gcc
+    # LLVM toolchain 18+ (21): Clang + libc++
+    llvmPackages_21.clang
+    llvmPackages_21.lld
+    llvmPackages_21.libcxx
+    llvmPackages_21.compiler-rt
+    llvmPackages_21.libunwind
+    llvmPackages_21.llvm
+    cmake
+    ninja
     pkg-config 
     openssl
     file
@@ -268,6 +277,8 @@
 
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib   # libstdc++.so.6
+    llvmPackages_21.libcxx # libc++.so.1
+    llvmPackages_21.libunwind # libunwind.so.1
     libxkbcommon        # libxkbcommon.so.0
     udev                # libudev.so.1 — actually provided by `systemd` on NixOS
     libinput             # libinput.so.10
