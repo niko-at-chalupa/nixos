@@ -1,0 +1,105 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Recreation of the p10k look from dotfiles/home/.p10k.zsh for Nushell.
+# Colors are ANSI palette indices (same numbers p10k uses), so the terminal
+# theme (noctalia) still drives them. Glyphs are written as \u escapes
+# (Nerd Font v3) so this file stays plain ASCII.
+#
+#   line 1:  [os][dir][git] ·········· [took][venv][nix][time]
+#   line 2:  ❯
+
+add_newline = true
+
+format = """\
+$os\
+$directory\
+$git_branch\
+$git_status\
+${custom.git_end}\
+${custom.dir_end}\
+$fill\
+$cmd_duration\
+$python\
+$nix_shell\
+$time\
+$line_break\
+$character"""
+
+# ── left ────────────────────────────────────────────────────────────────
+
+[os]
+disabled = false
+format = "[ $symbol ](fg:232 bg:7)"
+
+[os.symbols]
+NixOS = ""
+Arch = ""
+Linux = ""
+
+[directory]
+format = "[](fg:7 bg:4)[  $path$read_only ](fg:254 bg:4)"
+read_only = " "
+home_symbol = "~"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[git_branch]
+format = "[](fg:4 bg:3)[ on   $branch ](fg:0 bg:3)"
+
+[git_status]
+format = "[($all_status$ahead_behind )](fg:0 bg:3)"
+
+# The closing arrow depends on what the last segment was, so it is drawn by one
+# of these two. `shell` is pinned to sh because custom modules otherwise run in
+# $STARSHIP_SHELL (nu), where `!` is not valid.
+[custom.git_end]
+when = "git rev-parse --is-inside-work-tree"
+shell = ["sh"]
+format = "[](fg:3)"
+
+[custom.dir_end]
+when = "! git rev-parse --is-inside-work-tree"
+shell = ["sh"]
+format = "[](fg:4)"
+
+# ── gap ─────────────────────────────────────────────────────────────────
+
+[fill]
+symbol = "·"
+style = "fg:238"
+
+# ── right ───────────────────────────────────────────────────────────────
+
+[cmd_duration]
+min_time = 3000
+format = "[](fg:3)[ took $duration  ](fg:0 bg:3)"
+
+# Only shows while a venv is active (VIRTUAL_ENV), not just because a .py file
+# is nearby; name only, no Python version (same as VIRTUALENV_SHOW_PYTHON_VERSION=false).
+[python]
+detect_extensions = []
+detect_files = []
+detect_folders = []
+format = "[](fg:4)[ $virtualenv ](fg:0 bg:4)"
+
+# heuristic also catches `nix shell` / `nix-shell --pure`-less cases by looking
+# for /nix/store in PATH.
+[nix_shell]
+heuristic = true
+impure_msg = "impure"
+pure_msg = "pure"
+unknown_msg = "nix"
+format = "[](fg:4)[  $state ](fg:0 bg:4)"
+
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = "[](fg:7)[ at $time  ](fg:0 bg:7)"
+
+# ── prompt char ─────────────────────────────────────────────────────────
+
+[character]
+success_symbol = "[❯](fg:76)"
+error_symbol = "[❯](fg:196)"
+vimcmd_symbol = "[❮](fg:76)"
