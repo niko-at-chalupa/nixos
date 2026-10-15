@@ -10,6 +10,7 @@
     inputs.hyprland.homeManagerModules.default
     ./home/dotfiles.nix
     ./home/hyprland.nix
+    ./home/nushell.nix
     ./home/packages.nix
     ./home/zsh.nix
   ];
