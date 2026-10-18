@@ -208,4 +208,4 @@ require("hyprmon")
 
 hl.window_rule({ match = { content = "game", fullscreen = true }, confine_pointer = true })
 hl.window_rule({ match = { class = "mcpelauncher-client" }, confine_pointer = true })
-hl.window_rule({ match = { class = "ULTRAKILL" }, confine_pointer = true })
+hl.window_rule({ match = { title = "ULTRAKILL" }, confine_pointer = true })
